@@ -28,26 +28,11 @@ management:
     web:
       exposure:
         include: refresh
-     
+
 keycloak:
   realm: OfficerPro
   auth-server-url: http://localhost:8080
   resource: OfficerPro
   credentials:
-    secret: YOUR_CLIENT_SECRET   # replace with actual Keycloak client secret
+    secret: YOUR_CLIENT_SECRET
   bearer-only: false
-
-spring:
-  security:
-    oauth2:
-      client:
-        registration:
-          keycloak:
-            client-id: OfficerPro
-            client-secret: YOUR_CLIENT_SECRET
-            scope: openid, profile, email
-            authorization-grant-type: authorization_code
-            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
-        provider:
-          keycloak:
-            issuer-uri: http://localhost:8080/realms/OfficerPro
